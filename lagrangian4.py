@@ -23,12 +23,10 @@ firsty=[]
 secondx=[]
 secondy=[]
 
-
 x1=0
 y1=0
 x2=0
 y2=0
-
 
 for i in range(int((totaltime/deltaT)+1)):
     a=(m1+m2)*r1
@@ -52,7 +50,6 @@ for i in range(int((totaltime/deltaT)+1)):
     secondx.append(x2)
     secondy.append(y2)
     time+=deltaT
-
 
 plt.plot(firstx, firsty)
 plt.plot(secondx, secondy)
