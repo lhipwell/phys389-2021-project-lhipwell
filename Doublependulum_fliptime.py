@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.cm as cm
 
+#this system assumes massless rigid rods, no air reisitance, pointlike particiles of the pendulum masses, no dampening to the system and experiences uniform gravitation field (which was a strength of 9.81ms-1)   
+
 m1=1#the mass of the inner pendulum(changable)
 m2=1#the mass of the outer pendulum(changable)
 
