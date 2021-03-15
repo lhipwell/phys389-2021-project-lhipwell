@@ -49,12 +49,9 @@ while counter ==1:
             loop='start'    
         if angle>=math.pi-0.01 and angle<=math.pi+0.01 and loop=='start':#making sure the pendulum passes through the upwards vertical position
             loop='true'
-        if loop=='true'and angle<=starttheta2+0.01 and angle>=starttheta2-0.01:# checking the pendulum passes back to the starting position (the partcile may pass the exact position between checks thus there is a range the position must fall between)
+        if (loop=='true'and angle<=starttheta1+0.01 and angle>=starttheta1-0.01) or time>10000:# checking the pendulum passes back to the starting position (the partcile may pass the exact position between checks thus there is a range the position must fall between)
             counter2=2# this stops the loop of the current simulation 
             data.append([starttheta1, starttheta2, time])#appending the data to the data array 
-        if time>10000: # this is the cut off time as if there was insuffient energy in the system (and thus doesnt flip) the simulate would run forver 
-            data.append([starttheta1, starttheta2, time]) #appending the data to the data array 
-            counter2=2# this stops the loop of the current simulation
         time+=deltaT# this updates the curent time in the system
     print('theta1:', starttheta1, 'theta2:', starttheta2 )#this indicates the current simulation to the user 
     starttheta1+=0.1#the next simulation will start with an increased theta1 angle

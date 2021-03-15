@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.cm as cm
 from matplotlib.colors import LogNorm
 
-df = pd.read_csv('Output_Data1.csv', index_col=0).to_numpy() #this loads the saved data from the simulation file and makes it a numpy array  
+df = pd.read_csv('Output_Data3.csv', index_col=0).to_numpy() #this loads the saved data from the simulation file and makes it a numpy array  
 
 data=np.zeros(shape=(int(len(df)**0.5),int(len(df)**0.5)))# this creates a large empty array so that the values of time can be inserted to form the graph
 g=0#this is setting up counters to use in the for loop
