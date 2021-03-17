@@ -13,7 +13,7 @@ r1=1 #radius of the internal pendulum (from the origin)
 r2=1 #radius of the external pendulum (from the internal pendulum)
 #angles(radians) are measured from "down" /the -y direction, math.pi command will be useful
 theta1=math.pi #start angle of the internal pendulum (pendulum 1)
-theta2=math.pi-0.01 #start angle of the external pendulum (pendulum 2)
+theta2=math.pi #start angle of the external pendulum (pendulum 2)
 theta11=0 #angular velocity of the internal pendulum
 theta21=0 #angular velocity of the external pendulum
 
@@ -80,4 +80,4 @@ for i in range(int((totaltime/deltaT)+1)): #the loop will reccur and is when the
 
 plt.plot(firstx, firsty)#plotting the positions of the inner pendulum 
 plt.plot(secondx, secondy)#plotting the positions of the outer pendulum
-plt.show()#shows the graph of all the positions of both particiles 
+#plt.show()#shows the graph of all the positions of both particiles 
