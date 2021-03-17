@@ -13,12 +13,12 @@ r1=1 #radius of the internal pendulum (from the origin)
 r2=1 #radius of the external pendulum (from the internal pendulum)
 #angles(radians) are measured from "down" /the -y direction, math.pi command will be useful
 theta1=math.pi #start angle of the internal pendulum (pendulum 1)
-theta2=math.pi/2 #start angle of the external pendulum (pendulum 2)
+theta2=math.pi-0.01 #start angle of the external pendulum (pendulum 2)
 theta11=0 #angular velocity of the internal pendulum
 theta21=0 #angular velocity of the external pendulum
 
 time=0 #start time
-deltaT=0.01 #the time between system updates
+deltaT=0.001 #the time between system updates
 totaltime=40 #how long to simulate the system for
 
 #dont change variables from here down
@@ -32,6 +32,22 @@ x1=0#will be used as a place holder for the current x position of internal pendu
 y1=0#will be used as a place holder for the current y position of internal pendulum
 x2=0#will be used as a place holder for the current x position of external pendulum
 y2=0#will be used as a place holder for the current y position of external pendulum
+
+potenergy='no'#'yes' if you want the potential energy of the system outputed at each instance
+kinenergy='no'#'yes' if you want the kinetic energy energy of the system outputed at each instance
+totenergy='yes'#'yes' if you want the total energy of the system outputed at each instance
+
+def potentialenergy(m1,m2,theta1,theta2,r1,r2):#this is the function to output potential energy
+    penergy=-9.81*((m1+m2)*r1*math.cos(theta1)+m2*r2*math.cos(theta2))
+    return(penergy)
+
+def kineticenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21):#this is the function to output potential energy
+    kenergy=0.5*(m1+m2)*(r1**2)*(theta11**2)+0.5*m2*(r2**2)*(theta21**2)+m2*r1*r2*theta11*theta21*math.cos(theta1-theta2)
+    return(kenergy)
+
+def totalenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21):#this is the function to output potential energy
+    tenergy=potentialenergy(m1,m2,theta1,theta2,r1,r2)+kineticenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21)
+    return(tenergy)
 
 for i in range(int((totaltime/deltaT)+1)): #the loop will reccur and is when the system updates  
     a=(m1+m2)*r1#these are the variables used in the langrange equation so it was easier to understand the equation broken down like this  
@@ -50,6 +66,12 @@ for i in range(int((totaltime/deltaT)+1)): #the loop will reccur and is when the
     y1=-r1*math.cos(theta1)#using the angle to calculate the y position of the inner pendulum
     x2=x1+r2*math.sin(theta2)#using the angle to calculate the x position of the outer pendulum
     y2=y1-r2*math.cos(theta2)#using the angle to calculate the y position of the outer pendulum
+    if potenergy=='yes':#if the user wants the potential energy outputed at each time instance then this will print the infromation
+        print(potentialenergy(m1,m2,theta1,theta2,r1,r2))
+    if kinenergy=='yes':#if the user wants the kinetic energy outputed at each time instance then this will print the information
+        print(kineticenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
+    if totenergy=='yes':#if the user wants the total energy outputed at each time instance then this will print the information
+        print(totalenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
     firstx.append(x1)#adding the current x position of the inner pendulum to the array of the previous x positions 
     firsty.append(y1)#adding the current y position of the inner pendulum to the array of the previous y positions
     secondx.append(x2)#adding the current x position of the outer pendulum to the array of the previous x positions
