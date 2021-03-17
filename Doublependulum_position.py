@@ -67,11 +67,11 @@ for i in range(int((totaltime/deltaT)+1)): #the loop will reccur and is when the
     x2=x1+r2*math.sin(theta2)#using the angle to calculate the x position of the outer pendulum
     y2=y1-r2*math.cos(theta2)#using the angle to calculate the y position of the outer pendulum
     if potenergy=='yes':#if the user wants the potential energy outputed at each time instance then this will print the infromation
-        print(potentialenergy(m1,m2,theta1,theta2,r1,r2))
+        print('Potential energy:'potentialenergy(m1,m2,theta1,theta2,r1,r2))
     if kinenergy=='yes':#if the user wants the kinetic energy outputed at each time instance then this will print the information
-        print(kineticenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
+        print('Kinetic energy:',kineticenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
     if totenergy=='yes':#if the user wants the total energy outputed at each time instance then this will print the information
-        print(totalenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
+        print('Total energy:'totalenergy(m1,m2,r1,r2,theta1,theta2,theta11,theta21))
     firstx.append(x1)#adding the current x position of the inner pendulum to the array of the previous x positions 
     firsty.append(y1)#adding the current y position of the inner pendulum to the array of the previous y positions
     secondx.append(x2)#adding the current x position of the outer pendulum to the array of the previous x positions
